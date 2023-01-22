@@ -42,19 +42,18 @@ function onClick() {
 }
 
 const onInput = debounce(() => {
-  // const request = {
-  //   query: query.value,
-  //   fields: ['name', 'geometry']
-  // }
+  const request = {
+    query: query.value,
+    fields: ['name', 'geometry']
+  }
 
-  // const service = new google.maps.places.PlacesService(map)
-  // service.findPlaceFromQuery(request, (myResults, status) => {
-  //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-  //     results.value = myResults
-  //   }
+  placesService.findPlaceFromQuery(request, (myResults, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      results.value = myResults
+    }
 
-  //   console.log(myResults)
-  // })
+    console.log(myResults)
+  })
 }, 500)
 
 onMounted(() => {
@@ -64,11 +63,6 @@ onMounted(() => {
       google = myGoogle
       map = new google.maps.Map(document.getElementById('map'), mapOptions)
       placesService = new google.maps.places.PlacesService(map)
-      // service.findPlaceFromQuery(request, (myResults, status) => {
-      //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //     results.value = myResults
-      //   }
-      // })
     })
     .catch((error) => {
       console.log(error)
@@ -86,8 +80,6 @@ onMounted(() => {
         autocomplete="off">
 
       <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
-        {{ query }}
-
         <a v-for="result in results" :key="result" @click="onClick">
           {{ result.name }}
         </a>
