@@ -1,14 +1,13 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import styles from './assets/styles'
 import { ref } from 'vue'
 
 const loader = new Loader({
-  apiKey: "AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI",
-  version: "weekly",
-  libraries: ["places"]
-});
+  apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
+  version: 'weekly',
+  libraries: ['places']
+})
 
 const mapOptions = {
   center: { lat: 55.7558, lng: 37.6173 },
@@ -18,18 +17,19 @@ const mapOptions = {
   mapTypeControl: false,
   fullscreenControl: false,
   keyboardShortcuts: false,
-  styles: styles
-};
+  styles
+}
 
 // Promise
 loader
   .load()
   .then((google) => {
-    new google.maps.Map(document.getElementById("map"), mapOptions);
+    // eslint-disable-next-line no-new
+    new google.maps.Map(document.getElementById('map'), mapOptions)
   })
   .catch((e) => {
-    console.log(e);
-  });
+    console.log(e)
+  })
 
 const query = ref('')
 </script>
