@@ -39,6 +39,9 @@ function onClick(result) {
     map
   })
 
+  query.value = ''
+  results.value = []
+
   markers.value.push('marker')
 }
 
