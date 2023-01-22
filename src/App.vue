@@ -1,7 +1,8 @@
+<!-- eslint-disable no-new -->
 <script setup>
 import { Loader } from '@googlemaps/js-api-loader'
 import styles from './assets/styles'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
@@ -20,28 +21,64 @@ const mapOptions = {
   styles
 }
 
-// Promise
-loader
-  .load()
-  .then((google) => {
-    // eslint-disable-next-line no-new
-    new google.maps.Map(document.getElementById('map'), mapOptions)
-  })
-  .catch((e) => {
-    console.log(e)
-  })
-
 const query = ref('')
+const results = ref([])
+
+let map
+let google
+
+function onClick() {
+  console.log('addingMarker')
+
+  new google.maps.Marker({
+    position: { lat: 55.7558, lng: 37.6173 },
+    map
+  })
+}
+
+onMounted(() => {
+  loader
+    .load()
+    .then((myGoogle) => {
+      google = myGoogle
+      map = new google.maps.Map(document.getElementById('map'), mapOptions)
+
+      const request = {
+        query: 'mcdonalds',
+        fields: ['name', 'geometry']
+      }
+
+      const service = new google.maps.places.PlacesService(map)
+      service.findPlaceFromQuery(request, (myResults, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          results.value = myResults
+        }
+
+        console.log(myResults)
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
 </script>
 
 <template>
-  <div class="h-screen w-screen flex flex-col items-center justify-center">
-    <input type="text" name="name" id="" class="mb-8 p-2 h-10 border rounded" v-model="query">
-    {{ query }}
-    <div id="map" style="width: 75%; height: 75%;"></div>
+  <div class="container mx-auto py-10">
+    <div class="mb-8 flex">
+      <input type="text" name="name" id="" class=" p-2 h-10 border rounded" v-model="query">
+
+      <div class="ml-4">
+        {{ query }}
+
+        <a v-for="result in results" :key="result" @click="onClick()">
+          {{ result.name }}
+          {{ result.geometry.location.lat() }}
+          {{ result.geometry.location.lng() }}
+        </a>
+      </div>
+    </div>
+
+    <div id="map" style="width: 100%; height: 500px;"></div>
   </div>
 </template>
-
-<style scoped>
-
-</style>
