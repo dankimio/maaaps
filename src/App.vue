@@ -30,11 +30,12 @@ let map
 let google
 let placesService
 
-function onClick() {
-  console.log('addingMarker')
-
+function onClick(result) {
   new google.maps.Marker({
-    position: { lat: 55.7558, lng: 37.6173 },
+    position: {
+      lat: result.geometry.location.lat(),
+      lng: result.geometry.location.lng()
+    },
     map
   })
 
@@ -80,7 +81,7 @@ onMounted(() => {
         autocomplete="off">
 
       <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
-        <a v-for="result in results" :key="result" @click="onClick">
+        <a v-for="result in results" :key="result" @click="onClick(result)">
           {{ result.name }}
         </a>
 
