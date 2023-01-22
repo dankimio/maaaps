@@ -3,6 +3,7 @@
 import { Loader } from '@googlemaps/js-api-loader'
 import styles from './assets/styles'
 import { onMounted, ref } from 'vue'
+import { debounce } from 'lodash'
 
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
+    "lodash": "^4.17.21",
     "vue": "^3.2.45"
   },
   "devDependencies": {
