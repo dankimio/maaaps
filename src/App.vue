@@ -41,9 +41,11 @@ function onClick() {
 }
 
 function debounceInput() {
+  // console.log('debounce')
+
   debounce(() => {
     console.log('debounce')
-  }, 500)
+  }, 1000)
 }
 
 onMounted(() => {
@@ -53,19 +55,19 @@ onMounted(() => {
       google = myGoogle
       map = new google.maps.Map(document.getElementById('map'), mapOptions)
 
-      const request = {
-        query: 'mcdonalds',
-        fields: ['name', 'geometry']
-      }
+      // const request = {
+      //   query: 'mcdonalds',
+      //   fields: ['name', 'geometry']
+      // }
 
-      const service = new google.maps.places.PlacesService(map)
-      service.findPlaceFromQuery(request, (myResults, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          results.value = myResults
-        }
+      // const service = new google.maps.places.PlacesService(map)
+      // service.findPlaceFromQuery(request, (myResults, status) => {
+      //   if (status === google.maps.places.PlacesServiceStatus.OK) {
+      //     results.value = myResults
+      //   }
 
-        console.log(myResults)
-      })
+      //   console.log(myResults)
+      // })
     })
     .catch((error) => {
       console.log(error)
@@ -78,13 +80,13 @@ onMounted(() => {
     <div class="relative mb-8 flex">
       <input
         type="text" name="name" id="" class=" p-2 h-10 border rounded"
-        @change="debounceInput()"
+        @input="debounceInput"
         v-model="query">
 
       <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
         {{ query }}
 
-        <a v-for="result in results" :key="result" @click="onClick()">
+        <a v-for="result in results" :key="result" @click="onClick">
           {{ result.name }}
         </a>
 
