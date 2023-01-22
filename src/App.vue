@@ -68,20 +68,18 @@ onMounted(() => {
 
 <template>
   <div class="container mx-auto py-10">
-    <div class="mb-8 flex">
+    <div class="relative mb-8 flex">
       <input type="text" name="name" id="" class=" p-2 h-10 border rounded" v-model="query">
 
-      <div class="ml-4">
+      <div class="absolute z-10 bg-white" style="top: calc(100% + 20px)">
         {{ query }}
 
         <a v-for="result in results" :key="result" @click="onClick()">
           {{ result.name }}
-          {{ result.geometry.location.lat() }}
-          {{ result.geometry.location.lng() }}
         </a>
 
-        {{ markers }}
       </div>
+      {{ markers }}
     </div>
 
     <div id="map" style="width: 100%; height: 500px;"></div>
