@@ -36,6 +36,11 @@ function onClick(result) {
       lat: result.geometry.location.lat(),
       lng: result.geometry.location.lng()
     },
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 5,
+      fillColor: 'blue'
+    },
     map
   })
 
