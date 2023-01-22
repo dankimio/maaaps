@@ -39,7 +39,7 @@ function onClick(result) {
     icon: {
       path: google.maps.SymbolPath.CIRCLE,
       scale: 5,
-      fillColor: 'blue'
+      strokeColor: '#ad3c37'
     },
     map
   })
@@ -56,7 +56,7 @@ const onInput = debounce(() => {
     fields: ['name', 'geometry']
   }
 
-  placesService.findPlaceFromQuery(request, (myResults, status) => {
+  placesService.textSearch(request, (myResults, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       results.value = myResults
     }
@@ -89,9 +89,9 @@ onMounted(() => {
         autocomplete="off">
 
       <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
-        <a v-for="result in results" :key="result" @click="onClick(result)">
+        <div v-for="result in results" :key="result" @click="onClick(result)">
           {{ result.name }}
-        </a>
+        </div>
 
       </div>
       <!-- {{ markers }} -->
