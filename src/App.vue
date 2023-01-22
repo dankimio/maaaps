@@ -41,8 +41,6 @@ function onClick() {
 }
 
 const onInput = debounce(() => {
-  console.log('debounce')
-
   // const request = {
   //   query: query.value,
   //   fields: ['name', 'geometry']
@@ -56,7 +54,7 @@ const onInput = debounce(() => {
 
   //   console.log(myResults)
   // })
-}, 1000)
+}, 500)
 
 onMounted(() => {
   loader
