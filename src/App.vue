@@ -71,7 +71,7 @@ onMounted(() => {
     <div class="relative mb-8 flex">
       <input type="text" name="name" id="" class=" p-2 h-10 border rounded" v-model="query">
 
-      <div class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
+      <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
         {{ query }}
 
         <a v-for="result in results" :key="result" @click="onClick()">
@@ -79,7 +79,7 @@ onMounted(() => {
         </a>
 
       </div>
-      {{ markers }}
+      <!-- {{ markers }} -->
     </div>
 
     <div id="map" style="width: 100%; height: 500px;"></div>
