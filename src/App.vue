@@ -40,13 +40,23 @@ function onClick() {
   markers.value.push('marker')
 }
 
-function debounceInput() {
-  // console.log('debounce')
+const onInput = debounce(() => {
+  console.log('debounce')
 
-  debounce(() => {
-    console.log('debounce')
-  }, 1000)
-}
+  // const request = {
+  //   query: query.value,
+  //   fields: ['name', 'geometry']
+  // }
+
+  // const service = new google.maps.places.PlacesService(map)
+  // service.findPlaceFromQuery(request, (myResults, status) => {
+  //   if (status === google.maps.places.PlacesServiceStatus.OK) {
+  //     results.value = myResults
+  //   }
+
+  //   console.log(myResults)
+  // })
+}, 1000)
 
 onMounted(() => {
   loader
@@ -65,8 +75,6 @@ onMounted(() => {
       //   if (status === google.maps.places.PlacesServiceStatus.OK) {
       //     results.value = myResults
       //   }
-
-      //   console.log(myResults)
       // })
     })
     .catch((error) => {
@@ -80,7 +88,7 @@ onMounted(() => {
     <div class="relative mb-8 flex">
       <input
         type="text" name="name" id="" class=" p-2 h-10 border rounded"
-        @input="debounceInput"
+        @input="onInput"
         v-model="query">
 
       <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
