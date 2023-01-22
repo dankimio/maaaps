@@ -23,6 +23,7 @@ const mapOptions = {
 
 const query = ref('')
 const results = ref([])
+const markers = ref([])
 
 let map
 let google
@@ -34,6 +35,8 @@ function onClick() {
     position: { lat: 55.7558, lng: 37.6173 },
     map
   })
+
+  markers.value.push('marker')
 }
 
 onMounted(() => {
@@ -76,6 +79,8 @@ onMounted(() => {
           {{ result.geometry.location.lat() }}
           {{ result.geometry.location.lng() }}
         </a>
+
+        {{ markers }}
       </div>
     </div>
 
