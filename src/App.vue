@@ -89,7 +89,8 @@ onMounted(() => {
       <input
         type="text" name="name" id="" class=" p-2 h-10 border rounded"
         @input="onInput"
-        v-model="query">
+        v-model="query"
+        autocomplete="off">
 
       <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
         {{ query }}
