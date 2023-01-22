@@ -28,6 +28,7 @@ const markers = ref([])
 
 let map
 let google
+let placesService
 
 function onClick() {
   console.log('addingMarker')
@@ -62,13 +63,7 @@ onMounted(() => {
     .then((myGoogle) => {
       google = myGoogle
       map = new google.maps.Map(document.getElementById('map'), mapOptions)
-
-      // const request = {
-      //   query: 'mcdonalds',
-      //   fields: ['name', 'geometry']
-      // }
-
-      // const service = new google.maps.places.PlacesService(map)
+      placesService = new google.maps.places.PlacesService(map)
       // service.findPlaceFromQuery(request, (myResults, status) => {
       //   if (status === google.maps.places.PlacesServiceStatus.OK) {
       //     results.value = myResults
