@@ -40,6 +40,12 @@ function onClick() {
   markers.value.push('marker')
 }
 
+function debounceInput() {
+  debounce(() => {
+    console.log('debounce')
+  }, 500)
+}
+
 onMounted(() => {
   loader
     .load()
@@ -70,7 +76,10 @@ onMounted(() => {
 <template>
   <div class="container mx-auto py-10">
     <div class="relative mb-8 flex">
-      <input type="text" name="name" id="" class=" p-2 h-10 border rounded" v-model="query">
+      <input
+        type="text" name="name" id="" class=" p-2 h-10 border rounded"
+        @change="debounceInput()"
+        v-model="query">
 
       <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
         {{ query }}
