@@ -69,11 +69,11 @@ const onInput = debounce(() => {
           v-model="query"
           autocomplete="off">
 
-        <!-- <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
+        <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
           <div v-for="result in results" :key="result" @click="onClick(result)">
             {{ result.name }}
           </div>
-        </div> -->
+        </div>
       </div>
 
       <GoogleMap
