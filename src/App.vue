@@ -1,9 +1,12 @@
 <!-- eslint-disable no-new -->
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap } from 'vue3-google-map'
 import styles from './assets/styles'
+
+const query = ref('')
+const map = ref(null)
 
 const moscow = { lat: 55.7558, lng: 37.6173 }
 const loader = new Loader({
@@ -12,6 +15,7 @@ const loader = new Loader({
   libraries: ['places']
 })
 const mapOptions = {
+  apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   center: moscow,
   zoom: 10,
   streetViewControl: false,
@@ -22,13 +26,20 @@ const mapOptions = {
   styles
 }
 
-const apiPromise = loader.load()
+let placesService
 
-const query = ref('')
+watch(() => map.value?.ready, ready => {
+  if (!ready) return
 
-function onInput() {
-  console.log(query.value)
-}
+  loader
+    .load()
+    .then(google => {
+      placesService = new google.maps.places.PlacesService(map.value.map)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
 </script>
 
 <template>
@@ -49,10 +60,10 @@ function onInput() {
       </div>
 
       <GoogleMap
-        :apiPromise="apiPromise"
         :center="moscow"
         style="width: 100%; height: 500px"
         v-bind="mapOptions"
+        ref="map"
       >
       </GoogleMap>
     </div>
