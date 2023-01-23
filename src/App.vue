@@ -33,7 +33,7 @@ const markerOptions = {
   icon: {
     path: 0,
     scale: 5,
-    strokeColor: '#ad3c37'
+    strokeColor: '#e84a4a'
   }
 }
 
@@ -97,7 +97,9 @@ const onInput = debounce(() => {
       </div>
 
       <div class="col-span-4">
-        <MarkerCard v-for="marker in markers" :key="marker.place_id" :marker="marker" />
+        <div class="flex flex-col gap-y-5">
+          <MarkerCard v-for="marker in markers" :key="marker.place_id" :marker="marker" />
+        </div>
       </div>
     </div>
   </div>
