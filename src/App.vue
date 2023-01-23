@@ -4,6 +4,7 @@ import { ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap, Marker } from 'vue3-google-map'
 import { debounce } from 'lodash'
+import MarkerCard from './components/MarkerCard.vue'
 import styles from './assets/styles'
 
 const query = ref('')
@@ -77,10 +78,7 @@ const onInput = debounce(() => {
   <div class="container mx-auto py-10 grid grid-cols-12">
     <div class="col-span-8">
       <div class="relative mb-8 flex">
-        <input
-          type="text" name="name" id="" class=" p-2 h-10 border rounded"
-          @input="onInput"
-          v-model="query"
+        <input type="text" name="name" id="" class=" p-2 h-10 border rounded" @input="onInput" v-model="query"
           autocomplete="off">
 
         <div v-if="searchResults" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
@@ -90,17 +88,14 @@ const onInput = debounce(() => {
         </div>
       </div>
 
-      <GoogleMap
-        :center="moscow"
-        style="width: 100%; height: 500px"
-        v-bind="mapOptions"
-        ref="map"
-      >
-        <Marker v-for="marker in markers"
-          :key="marker.place_id"
-          :options="{ position: marker.geometry.location, ...markerOptions }"
-        />
+      <GoogleMap :center="moscow" style="width: 100%; height: 500px" v-bind="mapOptions" ref="map">
+        <Marker v-for="marker in markers" :key="marker.place_id"
+          :options="{ position: marker.geometry.location, ...markerOptions }" />
       </GoogleMap>
+    </div>
+
+    <div class="col-span-4">
+      <MarkerCard />
     </div>
   </div>
 </template>
