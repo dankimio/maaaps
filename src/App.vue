@@ -3,10 +3,12 @@
 import { ref, onMounted, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap } from 'vue3-google-map'
+import { debounce } from 'lodash'
 import styles from './assets/styles'
 
 const query = ref('')
 const map = ref(null)
+const results = ref([])
 
 const moscow = { lat: 55.7558, lng: 37.6173 }
 const loader = new Loader({
@@ -27,19 +29,34 @@ const mapOptions = {
 }
 
 let placesService
+let google
 
 watch(() => map.value?.ready, ready => {
   if (!ready) return
 
   loader
     .load()
-    .then(google => {
+    .then(_google => {
+      google = _google
       placesService = new google.maps.places.PlacesService(map.value.map)
     })
     .catch((error) => {
       console.log(error)
     })
 })
+
+const onInput = debounce(() => {
+  const request = {
+    query: query.value,
+    location: moscow
+  }
+
+  placesService.textSearch(request, (_results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      results.value = _results
+    }
+  })
+}, 500)
 </script>
 
 <template>
