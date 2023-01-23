@@ -101,11 +101,11 @@ onMounted(() => {
       <!-- {{ markers }} -->
     </div>
 
+    <div id="map" style="width: 100%; height: 500px;"></div>
     <GoogleMap
       style="width: 100%; height: 500px"
       v-bind="mapOptions"
     >
-      <Marker :options="{ position: center }" />
     </GoogleMap>
   </div>
 </template>
