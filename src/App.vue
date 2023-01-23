@@ -45,6 +45,24 @@ watch(() => map.value?.ready, ready => {
     })
 })
 
+function onClick(result) {
+  new google.maps.Marker({
+    position: {
+      lat: result.geometry.location.lat(),
+      lng: result.geometry.location.lng()
+    },
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 5,
+      strokeColor: '#ad3c37'
+    },
+    map: map.value.map
+  })
+
+  query.value = ''
+  results.value = []
+}
+
 const onInput = debounce(() => {
   const request = {
     query: query.value,
