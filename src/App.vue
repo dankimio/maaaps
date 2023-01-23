@@ -87,7 +87,7 @@ const onInput = debounce(() => {
       </div>
     </div>
 
-    <div class="grid grid-cols-12">
+    <div class="grid grid-cols-12 gap-x-8">
       <div class="col-span-8">
 
         <GoogleMap :center="moscow" style="width: 100%; height: 500px" v-bind="mapOptions" ref="map">
