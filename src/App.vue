@@ -97,7 +97,7 @@ const onInput = debounce(() => {
       </div>
 
       <div class="col-span-4">
-        <MarkerCard />
+        <MarkerCard v-for="marker in markers" :key="marker.place_id" :marker="marker" />
       </div>
     </div>
   </div>
