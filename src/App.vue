@@ -55,7 +55,8 @@ function onClick(result) {
 const onInput = debounce(() => {
   const request = {
     query: query.value,
-    fields: ['name', 'geometry']
+    fields: ['name', 'geometry'],
+    location: moscow
   }
 
   placesService.textSearch(request, (myResults, status) => {
