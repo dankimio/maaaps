@@ -75,27 +75,30 @@ const onInput = debounce(() => {
 </script>
 
 <template>
-  <div class="container mx-auto py-10 grid grid-cols-12">
-    <div class="col-span-8">
-      <div class="relative mb-8 flex">
-        <input type="text" name="name" id="" class=" p-2 h-10 border rounded" @input="onInput" v-model="query"
-          autocomplete="off">
+  <div class="container mx-auto py-10">
+    <div class="mb-8 relative flex">
+      <input type="text" name="name" id="" class="p-2 h-10 border rounded" @input="onInput" v-model="query"
+      autocomplete="off">
 
-        <div v-if="searchResults" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
-          <div v-for="result in searchResults" :key="result" @click="onClick(result)">
-            {{ result.name }}
-          </div>
+      <div v-if="searchResults.length" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
+        <div v-for="result in searchResults" :key="result" @click="onClick(result)">
+          {{ result.name }}
         </div>
       </div>
-
-      <GoogleMap :center="moscow" style="width: 100%; height: 500px" v-bind="mapOptions" ref="map">
-        <Marker v-for="marker in markers" :key="marker.place_id"
-          :options="{ position: marker.geometry.location, ...markerOptions }" />
-      </GoogleMap>
     </div>
 
-    <div class="col-span-4">
-      <MarkerCard />
+    <div class="grid grid-cols-12">
+      <div class="col-span-8">
+
+        <GoogleMap :center="moscow" style="width: 100%; height: 500px" v-bind="mapOptions" ref="map">
+          <Marker v-for="marker in markers" :key="marker.place_id"
+            :options="{ position: marker.geometry.location, ...markerOptions }" />
+        </GoogleMap>
+      </div>
+
+      <div class="col-span-4">
+        <MarkerCard />
+      </div>
     </div>
   </div>
 </template>
