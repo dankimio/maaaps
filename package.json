@@ -11,7 +11,8 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
     "lodash": "^4.17.21",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue3-google-map": "^0.15.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
