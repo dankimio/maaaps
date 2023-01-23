@@ -1,6 +1,6 @@
 <!-- eslint-disable no-new -->
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap, Marker } from 'vue3-google-map'
 import { debounce } from 'lodash'
