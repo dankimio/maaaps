@@ -1,19 +1,16 @@
 <!-- eslint-disable no-new -->
 <script setup>
+import { ref } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
+import { GoogleMap } from 'vue3-google-map'
 import styles from './assets/styles'
-import { onMounted, ref } from 'vue'
-import { debounce } from 'lodash'
-import { GoogleMap, Marker } from 'vue3-google-map'
 
 const moscow = { lat: 55.7558, lng: 37.6173 }
-
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   version: 'weekly',
   libraries: ['places']
 })
-
 const mapOptions = {
   center: moscow,
   zoom: 10,
@@ -25,62 +22,13 @@ const mapOptions = {
   styles
 }
 
+const apiPromise = loader.load()
+
 const query = ref('')
-const results = ref([])
-const markers = ref([])
 
-let map
-let google
-let placesService
-
-function onClick(result) {
-  new google.maps.Marker({
-    position: {
-      lat: result.geometry.location.lat(),
-      lng: result.geometry.location.lng()
-    },
-    icon: {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 5,
-      strokeColor: '#ad3c37'
-    },
-    map
-  })
-
-  query.value = ''
-  results.value = []
-
-  markers.value.push('marker')
+function onInput() {
+  console.log(query.value)
 }
-
-const onInput = debounce(() => {
-  const request = {
-    query: query.value,
-    fields: ['name', 'geometry'],
-    location: moscow
-  }
-
-  placesService.textSearch(request, (myResults, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      results.value = myResults
-    }
-
-    console.log(myResults)
-  })
-}, 500)
-
-onMounted(() => {
-  loader
-    .load()
-    .then((myGoogle) => {
-      google = myGoogle
-      map = new google.maps.Map(document.getElementById('map'), mapOptions)
-      placesService = new google.maps.places.PlacesService(map)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-})
 </script>
 
 <template>
@@ -92,18 +40,17 @@ onMounted(() => {
         v-model="query"
         autocomplete="off">
 
-      <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
+      <!-- <div v-if="results" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
         <div v-for="result in results" :key="result" @click="onClick(result)">
           {{ result.name }}
         </div>
-
-      </div>
-      <!-- {{ markers }} -->
+      </div> -->
     </div>
 
-    <div id="map" style="width: 100%; height: 500px;"></div>
     <GoogleMap
-      style="width: 100%; height: 500px"
+      :apiPromise="apiPromise"
+      :center="moscow"
+      style="width: 100%; height: 400px"
       v-bind="mapOptions"
     >
     </GoogleMap>
