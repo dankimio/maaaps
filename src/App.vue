@@ -1,17 +1,11 @@
 <!-- eslint-disable no-new -->
 <script setup>
-import { Loader } from '@googlemaps/js-api-loader'
 import styles from './assets/styles'
 import { onMounted, ref } from 'vue'
 import { debounce } from 'lodash'
+import { GoogleMap, Marker } from 'vue3-google-map'
 
 const moscow = { lat: 55.7558, lng: 37.6173 }
-
-const loader = new Loader({
-  apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
-  version: 'weekly',
-  libraries: ['places']
-})
 
 const mapOptions = {
   center: moscow,
@@ -100,6 +94,11 @@ onMounted(() => {
       <!-- {{ markers }} -->
     </div>
 
-    <div id="map" style="width: 100%; height: 500px;"></div>
+    <GoogleMap
+      style="width: 100%; height: 500px"
+      v-bind="mapOptions"
+    >
+      <Marker :options="{ position: center }" />
+    </GoogleMap>
   </div>
 </template>
