@@ -5,6 +5,8 @@ import styles from './assets/styles'
 import { onMounted, ref } from 'vue'
 import { debounce } from 'lodash'
 
+const moscow = { lat: 55.7558, lng: 37.6173 }
+
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   version: 'weekly',
@@ -12,7 +14,7 @@ const loader = new Loader({
 })
 
 const mapOptions = {
-  center: { lat: 55.7558, lng: 37.6173 },
+  center: moscow,
   zoom: 10,
   streetViewControl: false,
   zoomControl: false,
