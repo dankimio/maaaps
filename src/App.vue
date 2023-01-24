@@ -77,7 +77,7 @@ const onInput = debounce(() => {
 <template>
   <div class="container mx-auto py-10">
     <div class="mb-8 relative flex">
-      <input type="text" name="name" id="" class="p-2 h-10 border rounded" @input="onInput" v-model="query"
+      <input type="text" name="name" id="" class="p-2 h-10 border rounded border-neutral-300" @input="onInput" v-model="query"
         autocomplete="off">
 
       <div v-if="searchResults.length" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
