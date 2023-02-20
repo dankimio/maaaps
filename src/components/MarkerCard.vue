@@ -20,8 +20,11 @@ const googleMapsUrl = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col hover:bg-neutral-50 rounded-lg py-4 px-6 transition break-words">
-    <a :href="googleMapsUrl" target="_blank" class="mb-1">{{ marker.name }}</a>
-    <p class="text-sm text-neutral-800">{{ marker.formatted_address }}</p>
+  <div class="flex justify-between hover:bg-neutral-50 rounded-lg py-4 px-6 transition break-words">
+    <div class="flex flex-col">
+      <a :href="googleMapsUrl" target="_blank" class="mb-1">{{ marker.name }}</a>
+      <p class="text-sm text-neutral-600">{{ marker.formatted_address }}</p>
+    </div>
+    x
   </div>
 </template>
