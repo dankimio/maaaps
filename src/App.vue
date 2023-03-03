@@ -4,6 +4,7 @@ import { ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap, Marker } from 'vue3-google-map'
 
+import SearchInput from './components/SearchInput.vue'
 import MarkerCard from './components/MarkerCard.vue'
 import styles from './assets/styles'
 import { useMapStore } from './stores/map'
@@ -58,10 +59,10 @@ watch(() => map.value?.ready, ready => {
     <div class="grid grid-cols-12 gap-x-8">
       <div class="col-span-8">
         <!-- <GoogleMap :center="moscow" style="width: 100%; height: 500px" v-bind="mapOptions" ref="map"
-                                      class="overflow-hidden">
-                                      <Marker v-for="marker in markers" :key="marker.place_id"
-                                        :options="{ position: marker.geometry.location, ...markerOptions }" />
-                                    </GoogleMap> -->
+                                            class="overflow-hidden">
+                                            <Marker v-for="marker in markers" :key="marker.place_id"
+                                              :options="{ position: marker.geometry.location, ...markerOptions }" />
+                                          </GoogleMap> -->
       </div>
 
       <div class="col-span-4">
