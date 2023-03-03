@@ -1,7 +1,22 @@
 <script setup>
+import { debounce } from 'lodash'
+
 import { useMapStore } from './stores/map'
 
 const store = useMapStore()
+
+const onInput = debounce(() => {
+  const request = {
+    query: query.value,
+    location: moscow
+  }
+
+  placesService.textSearch(request, (_results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      searchResults.value = _results
+    }
+  })
+}, 500)
 
 function onSearchResultClick(result) {
   store.markers.push(result)

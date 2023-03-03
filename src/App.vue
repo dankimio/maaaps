@@ -3,7 +3,6 @@
 import { ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap, Marker } from 'vue3-google-map'
-import { debounce } from 'lodash'
 
 import MarkerCard from './components/MarkerCard.vue'
 import styles from './assets/styles'
@@ -53,19 +52,6 @@ watch(() => map.value?.ready, ready => {
       console.log(error)
     })
 })
-
-const onInput = debounce(() => {
-  const request = {
-    query: query.value,
-    location: moscow
-  }
-
-  placesService.textSearch(request, (_results, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      searchResults.value = _results
-    }
-  })
-}, 500)
 </script>
 
 <template>
