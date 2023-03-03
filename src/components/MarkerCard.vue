@@ -29,6 +29,6 @@ const googleMapsUrl = computed(() => {
       <a :href="googleMapsUrl" target="_blank" class="mb-1">{{ marker.name }}</a>
       <p class="text-sm text-neutral-600">{{ marker.formatted_address }}</p>
     </div>
-    <button @click.prevent="store.removeMarker(marker)" class="self-start">✕</button>
+    <button @click.prevent="store.removeMarker(marker)" class="self-start text-gray-600 hover:text-gray-800">✕</button>
   </div>
 </template>
