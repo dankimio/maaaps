@@ -5,15 +5,17 @@ import { useMapStore } from './stores/map'
 
 const store = useMapStore()
 
+const moscow = { lat: 55.7558, lng: 37.6173 }
+
 const onInput = debounce(() => {
   const request = {
-    query: query.value,
+    query: store.query.value,
     location: moscow
   }
 
-  placesService.textSearch(request, (_results, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      searchResults.value = _results
+  store.placesService.textSearch(request, (_results, status) => {
+    if (status === store.google.maps.places.PlacesServiceStatus.OK) {
+      store.searchResults.value = _results
     }
   })
 }, 500)

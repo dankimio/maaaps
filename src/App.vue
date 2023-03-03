@@ -36,17 +36,14 @@ const markerOptions = {
   }
 }
 
-let placesService
-let google
-
 watch(() => map.value?.ready, ready => {
   if (!ready) return
 
   loader
     .load()
-    .then(g => {
-      google = g
-      placesService = new google.maps.places.PlacesService(map.value.map)
+    .then(google => {
+      store.google = google
+      store.placesService = new google.maps.places.PlacesService(map.value.map)
     })
     .catch((error) => {
       console.log(error)
