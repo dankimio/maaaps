@@ -32,7 +32,7 @@ const mapOptions = {
 const markerOptions = {
   icon: {
     path: 0,
-    scale: 5,
+    scale: 4,
     strokeColor: '#e53c37',
     fillColor: '#e53c37',
     fillOpacity: 1
