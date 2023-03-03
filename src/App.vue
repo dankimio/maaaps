@@ -54,12 +54,6 @@ watch(() => map.value?.ready, ready => {
     })
 })
 
-function onSearchResultClick(result) {
-  markers.value.push(result)
-  query.value = ''
-  searchResults.value = []
-}
-
 const onInput = debounce(() => {
   const request = {
     query: query.value,
@@ -76,16 +70,7 @@ const onInput = debounce(() => {
 
 <template>
   <div class="container mx-auto py-10">
-    <div class="mb-8 relative flex">
-      <input type="text" name="name" id="" class="p-2 h-10 border rounded border-neutral-300" @input="onInput"
-        v-model="query" autocomplete="off">
-
-      <div v-if="searchResults.length" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
-        <div v-for="result in searchResults" :key="result" @click="onSearchResultClick(result)">
-          {{ result.name }}
-        </div>
-      </div>
-    </div>
+    <SearchInput class="mb-8" />
 
     <div class="grid grid-cols-12 gap-x-8">
       <div class="col-span-8">
