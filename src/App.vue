@@ -54,7 +54,7 @@ watch(() => map.value?.ready, ready => {
     })
 })
 
-function onClick(result) {
+function onSearchResultClick(result) {
   markers.value.push(result)
   query.value = ''
   searchResults.value = []
@@ -81,7 +81,7 @@ const onInput = debounce(() => {
         v-model="query" autocomplete="off">
 
       <div v-if="searchResults.length" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
-        <div v-for="result in searchResults" :key="result" @click="onClick(result)">
+        <div v-for="result in searchResults" :key="result" @click="onSearchResultClick(result)">
           {{ result.name }}
         </div>
       </div>
