@@ -10,12 +10,12 @@ const store = useMapStore()
 </script>
 
 <template>
-  <div class="container mx-auto py-10">
+  <div class="container mx-auto py-10 flex flex-col min-h-screen">
     <SearchInput class="mb-8" />
 
-    <div class="grid grid-cols-12 gap-x-8">
+    <div class="flex-1 grid grid-cols-12 gap-x-8">
       <div class="col-span-8">
-        <Map />
+        <Map class="h-max" />
       </div>
 
       <div class="col-span-4">
