@@ -1,6 +1,6 @@
 <script setup>
 import SearchInput from './components/SearchInput.vue'
-import Map from './components/Map.vue'
+import MapView from './components/MapView.vue'
 import MarkerCard from './components/MarkerCard.vue'
 
 import { useMapStore } from './stores/map'
@@ -14,7 +14,7 @@ const store = useMapStore()
 
     <div class="flex-1 grid grid-cols-12 gap-x-8">
       <div class="col-span-8">
-        <Map class="h-max" />
+        <MapView class="h-max" />
       </div>
 
       <div class="col-span-4">
