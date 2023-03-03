@@ -18,5 +18,5 @@ export const useMapStore = defineStore('map', () => {
     markers.value = markers.value.filter((m) => m !== marker)
   }
 
-  return { markers, query, searchResults, addMarker, removeMarker }
+  return { google, placesService, markers, query, searchResults, addMarker, removeMarker }
 })
