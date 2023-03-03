@@ -10,7 +10,7 @@ const store = useMapStore()
 
 <template>
   <div class="container mx-auto py-12 flex flex-col min-h-screen">
-    <div class="flex-1 grid grid-cols-12 gap-x-8">
+    <div class="flex-1 grid grid-cols-12 gap-x-12">
       <div class="col-span-8">
         <MapView class="h-max" />
       </div>
