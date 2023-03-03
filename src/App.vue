@@ -60,7 +60,7 @@ watch(() => map.value?.ready, ready => {
 
     <div class="grid grid-cols-12 gap-x-8">
       <div class="col-span-8">
-        <GoogleMap :center="moscow" style="width: 100%; height: 500px" v-bind="mapOptions" ref="map"
+        <GoogleMap :center="moscow" style="width: 100%; height: 600px" v-bind="mapOptions" ref="map"
           class="overflow-hidden">
           <Marker v-for="marker in store.markers" :key="marker.place_id"
             :options="{ position: marker.geometry.location, ...markerOptions }" />
