@@ -32,7 +32,8 @@ function onSearchResultClick(result) {
     <input type="text" name="name" id="" class="w-full px-4 h-12 border-none rounded-md bg-neutral-100" @input="onInput"
       v-model="store.query" autocomplete="off" placeholder="Start typing…">
 
-    <div v-if="store.searchResults.length" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
+    <div v-if="store.searchResults.length" class="absolute z-10 bg-gray-50 rounded px-4 py-3"
+      style="top: calc(100% + 12px)">
       <div v-for="result in store.searchResults" :key="result" @click="onSearchResultClick(result)"
         class="mb-2 flex flex-col">
         <span class="-mb-0.5">
