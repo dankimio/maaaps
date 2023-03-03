@@ -10,4 +10,6 @@ export const useMapStore = defineStore('map', () => {
   function removeMarker(marker) {
     markers.value = markers.value.filter((m) => m !== marker)
   }
+
+  return { markers, addMarker, removeMarker }
 })
