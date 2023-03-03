@@ -1,4 +1,3 @@
-<!-- eslint-disable no-new -->
 <script setup>
 import SearchInput from './components/SearchInput.vue'
 import Map from './components/Map.vue'
