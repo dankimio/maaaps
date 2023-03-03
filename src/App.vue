@@ -4,9 +4,12 @@ import { ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap, Marker } from 'vue3-google-map'
 import { debounce } from 'lodash'
+
 import MarkerCard from './components/MarkerCard.vue'
 import styles from './assets/styles'
+import { useMapStore } from './stores/map'
 
+const store = useMapStore()
 const query = ref('')
 const map = ref(null)
 const searchResults = ref([])
