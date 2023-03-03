@@ -18,7 +18,7 @@ const store = useMapStore()
       <div class="col-span-4">
         <SearchInput class="mb-8" />
 
-        <div class="flex flex-col gap-y-5">
+        <div class="flex flex-col gap-y-4">
           <MarkerCard v-for="marker in store.markers" :key="marker.place_id" :marker="marker" />
         </div>
       </div>
