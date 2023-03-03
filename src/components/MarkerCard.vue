@@ -1,6 +1,10 @@
 <script setup>
 import { computed } from 'vue'
 
+import { useMapStore } from '../stores/map'
+
+const store = useMapStore()
+
 const props = defineProps({
   marker: {
     type: Object,
@@ -17,10 +21,6 @@ const googleMapsUrl = computed(() => {
   const urlSearchParams = new URLSearchParams(params).toString()
   return `https://www.google.com/maps/search/?${urlSearchParams}`
 })
-
-function removeMarker() {
-  console.log('removeMarker')
-}
 </script>
 
 <template>
@@ -29,6 +29,6 @@ function removeMarker() {
       <a :href="googleMapsUrl" target="_blank" class="mb-1">{{ marker.name }}</a>
       <p class="text-sm text-neutral-600">{{ marker.formatted_address }}</p>
     </div>
-    <button @click.prevent="removeMarker(marker)" class="self-start">✕</button>
+    <button @click.prevent="store.removeMarker(marker)" class="self-start">✕</button>
   </div>
 </template>
