@@ -33,7 +33,9 @@ const markerOptions = {
   icon: {
     path: 0,
     scale: 5,
-    strokeColor: '#e84a4a'
+    strokeColor: '#e53c37',
+    fillColor: '#e53c37',
+    fillOpacity: 1
   }
 }
 
