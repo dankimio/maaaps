@@ -52,7 +52,7 @@ watch(() => map.value?.ready, ready => {
 </script>
 
 <template>
-  <GoogleMap :center="moscow" style="width: 100%; height: 90%;" v-bind="mapOptions" ref="map" class="overflow-hidden">
+  <GoogleMap :center="moscow" style="width: 100%; height: 100%;" v-bind="mapOptions" ref="map" class="overflow-hidden">
     <Marker v-for="marker in store.markers" :key="marker.place_id"
       :options="{ position: marker.geometry.location, ...markerOptions }" />
   </GoogleMap>
