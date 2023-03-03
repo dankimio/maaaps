@@ -35,7 +35,7 @@ function onSearchResultClick(result) {
     <div v-if="store.searchResults.length" class="absolute z-10 bg-gray-50 rounded-md overflow-hidden"
       style="top: calc(100% + 12px)">
       <div v-for="result in store.searchResults" :key="result" @click="onSearchResultClick(result)"
-        class="px-4 py-3 flex flex-col hover:bg-gray-100">
+        class="px-4 py-3 flex flex-col hover:bg-gray-100 cursor-pointer">
         <span class="-mb-0.5">
           {{ result.name }}
         </span>
