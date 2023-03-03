@@ -10,10 +10,7 @@ import styles from './assets/styles'
 import { useMapStore } from './stores/map'
 
 const store = useMapStore()
-const query = ref('')
 const map = ref(null)
-const searchResults = ref([])
-const markers = ref([])
 
 const moscow = { lat: 55.7558, lng: 37.6173 }
 const loader = new Loader({

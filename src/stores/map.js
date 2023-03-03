@@ -2,6 +2,8 @@ import { defineStore, ref } from 'pinia'
 
 export const useMapStore = defineStore('map', () => {
   const markers = ref([])
+  const query = ref('')
+  const searchResults = ref([])
 
   function addMarker(marker) {
     markers.value.push(marker)
@@ -11,5 +13,5 @@ export const useMapStore = defineStore('map', () => {
     markers.value = markers.value.filter((m) => m !== marker)
   }
 
-  return { markers, addMarker, removeMarker }
+  return { markers, query, searchResults, addMarker, removeMarker }
 })
