@@ -33,8 +33,14 @@ function onSearchResultClick(result) {
       v-model="store.query" autocomplete="off" placeholder="Start typing…">
 
     <div v-if="store.searchResults.length" class="absolute z-10 bg-white rounded p-2" style="top: calc(100% + 12px)">
-      <div v-for="result in store.searchResults" :key="result" @click="onSearchResultClick(result)">
-        {{ result.name }}
+      <div v-for="result in store.searchResults" :key="result" @click="onSearchResultClick(result)"
+        class="mb-2 flex flex-col">
+        <span class="-mb-0.5">
+          {{ result.name }}
+        </span>
+        <span class="text-sm text-gray-500">
+          {{ result.formatted_address }}
+        </span>
       </div>
     </div>
   </div>
