@@ -14,6 +14,7 @@ specifiers:
   lodash: ^4.17.21
   pinia: ^2.0.32
   postcss: ^8.4.21
+  sortablejs-vue3: ^1.2.8
   tailwindcss: ^3.2.7
   vite: ^4.1.4
   vue: ^3.2.47
@@ -23,6 +24,7 @@ dependencies:
   '@googlemaps/js-api-loader': 1.15.1
   lodash: 4.17.21
   pinia: 2.0.32_vue@3.2.47
+  sortablejs-vue3: 1.2.8_vue@3.2.47
   vue: 3.2.47
   vue3-google-map: 0.15.0_vue@3.2.47
 
@@ -1949,6 +1951,24 @@ packages:
       get-intrinsic: 1.2.0
       object-inspect: 1.12.3
     dev: true
+
+  /sortablejs-vue3/1.2.8_vue@3.2.47:
+    resolution: {integrity: sha512-blIT0QRQIwXa4LsNGkXtMNP6FHDpfqrRTFyvyJeq8PxWFx9rRxiEAKBueKS6Q3ZFuitlr1gCOV65a4d/CGLz1A==}
+    peerDependencies:
+      '@vue/composition-api': '*'
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      sortablejs: 1.15.0
+      vue: 3.2.47
+      vue-demi: 0.13.11_vue@3.2.47
+    dev: false
+
+  /sortablejs/1.15.0:
+    resolution: {integrity: sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==}
+    dev: false
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}

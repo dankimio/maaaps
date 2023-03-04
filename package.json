@@ -12,6 +12,7 @@
     "@googlemaps/js-api-loader": "^1.15.1",
     "lodash": "^4.17.21",
     "pinia": "^2.0.32",
+    "sortablejs-vue3": "^1.2.8",
     "vue": "^3.2.47",
     "vue3-google-map": "^0.15.0"
   },
