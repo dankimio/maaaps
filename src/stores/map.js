@@ -4,6 +4,7 @@ import { ref } from 'vue'
 export const useMapStore = defineStore('map', () => {
   // Google
   const google = ref(null)
+  const map = ref(null)
   const placesService = ref(null)
 
   // Map
@@ -29,5 +30,5 @@ export const useMapStore = defineStore('map', () => {
     searchResults.value = []
   }
 
-  return { google, placesService, markers, query, searchResults, addMarker, removeMarker, moveMarker, clearSearch }
+  return { google, map, placesService, markers, query, searchResults, addMarker, removeMarker, moveMarker, clearSearch }
 })

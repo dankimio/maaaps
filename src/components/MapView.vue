@@ -39,6 +39,8 @@ const markerOptions = {
 watch(() => mapRef.value?.ready, ready => {
   if (!ready) return
 
+  store.map = mapRef.value.map
+
   loader
     .load()
     .then(google => {
