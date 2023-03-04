@@ -140,7 +140,7 @@ const styles = [
     elementType: 'geometry',
     stylers: [
       {
-        color: '#dadada'
+        color: '#e6e6e6'
       }
     ]
   },
