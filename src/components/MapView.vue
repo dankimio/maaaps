@@ -7,7 +7,7 @@ import styles from '../assets/styles'
 import { useMapStore } from '../stores/map'
 
 const store = useMapStore()
-const map = ref(null)
+const mapRef = ref(null)
 
 const center = { lat: 55.7558, lng: 37.6173 }
 const loader = new Loader({
@@ -36,14 +36,14 @@ const markerOptions = {
   }
 }
 
-watch(() => map.value?.ready, ready => {
+watch(() => mapRef.value?.ready, ready => {
   if (!ready) return
 
   loader
     .load()
     .then(google => {
       store.google = google
-      store.placesService = new google.maps.places.PlacesService(map.value.map)
+      store.placesService = new google.maps.places.PlacesService(mapRef.value.map)
     })
     .catch((error) => {
       console.log(error)
@@ -52,7 +52,8 @@ watch(() => map.value?.ready, ready => {
 </script>
 
 <template>
-  <GoogleMap style="width: 100%; height: 100%; min-height: 500px;" v-bind="mapOptions" ref="map" class="overflow-hidden">
+  <GoogleMap style="width: 100%; height: 100%; min-height: 500px;" v-bind="mapOptions" ref="mapRef"
+    class="overflow-hidden">
     <Marker v-for="(marker, index) in store.markers" :key="marker.place_id" :options="{
       position: marker.geometry.location, label: { text: `${index + 1}`, color: 'white', fontSize: '11px' }, ...markerOptions
     }" />
