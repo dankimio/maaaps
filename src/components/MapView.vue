@@ -9,7 +9,7 @@ import { useMapStore } from '../stores/map'
 const store = useMapStore()
 const map = ref(null)
 
-const moscow = { lat: 55.7558, lng: 37.6173 }
+const center = { lat: 51.509865, lng: -0.118092 }
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   version: 'weekly',
@@ -17,8 +17,8 @@ const loader = new Loader({
 })
 const mapOptions = {
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
-  center: moscow,
-  zoom: 10,
+  center,
+  zoom: 12,
   streetViewControl: false,
   zoomControl: false,
   mapTypeControl: false,
@@ -52,8 +52,7 @@ watch(() => map.value?.ready, ready => {
 </script>
 
 <template>
-  <GoogleMap :center="moscow" style="width: 100%; height: 100%; min-height: 500px;" v-bind="mapOptions" ref="map"
-    class="overflow-hidden">
+  <GoogleMap style="width: 100%; height: 100%; min-height: 500px;" v-bind="mapOptions" ref="map" class="overflow-hidden">
     <Marker v-for="(marker, index) in store.markers" :key="marker.place_id" :options="{
       position: marker.geometry.location, label: { text: `${index + 1}`, color: 'white', fontSize: '10px' }, ...markerOptions
     }" />
