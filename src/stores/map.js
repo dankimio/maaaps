@@ -13,13 +13,16 @@ export const useMapStore = defineStore('map', () => {
 
   function addMarker(marker) {
     markers.value.push(marker)
-    query.value = ''
-    searchResults.value = []
   }
 
   function removeMarker(marker) {
     markers.value = markers.value.filter((m) => m !== marker)
   }
 
-  return { google, placesService, markers, query, searchResults, addMarker, removeMarker }
+  function clearSearch() {
+    query.value = ''
+    searchResults.value = []
+  }
+
+  return { google, placesService, markers, query, searchResults, addMarker, removeMarker, clearSearch }
 })

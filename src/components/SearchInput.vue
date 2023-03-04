@@ -27,6 +27,7 @@ const onInput = debounce(() => {
 
 function onSearchResultClick(result) {
   store.addMarker(result)
+  store.clearSearch()
 }
 </script>
 
