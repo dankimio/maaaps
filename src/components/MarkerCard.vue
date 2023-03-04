@@ -33,7 +33,7 @@ const googleMapsUrl = computed(() => {
       <div class="flex gap-x-2 items-center mb-1">
         <span class="bg-neutral-200 text-neutral-600 h-4 w-4 rounded-full flex justify-center items-center"
           style="font-size: 0.66rem">
-          {{ index }}
+          {{ index + 1 }}
         </span>
         <a :href="googleMapsUrl" target="_blank">{{ marker.name }}</a>
       </div>
