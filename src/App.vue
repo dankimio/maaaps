@@ -30,8 +30,8 @@ const onEnd = (event) => {
         <SearchInput class="mb-8" />
 
         <Sortable :list="store.markers" item-key="place_id" @end="onEnd" class="flex flex-col gap-y-4">
-          <template #item="{ element }">
-            <MarkerCard :marker="element" class="draggable" :key="element.id" />
+          <template #item="{ element, index }">
+            <MarkerCard :marker="element" :index="index" class="draggable" :key="element.id" />
           </template>
         </Sortable>
       </div>
