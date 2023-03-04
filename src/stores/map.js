@@ -19,10 +19,15 @@ export const useMapStore = defineStore('map', () => {
     markers.value = markers.value.filter((m) => m !== marker)
   }
 
+  function moveMarker(from, to) {
+    const marker = markers.value.splice(from, 1)[0]
+    markers.value.splice(to, 0, marker)
+  }
+
   function clearSearch() {
     query.value = ''
     searchResults.value = []
   }
 
-  return { google, placesService, markers, query, searchResults, addMarker, removeMarker, clearSearch }
+  return { google, placesService, markers, query, searchResults, addMarker, removeMarker, moveMarker, clearSearch }
 })

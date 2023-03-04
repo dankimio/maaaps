@@ -9,13 +9,8 @@ import { useMapStore } from './stores/map'
 
 const store = useMapStore()
 
-const moveMarker = (from, to) => {
-  const marker = store.markers.splice(from, 1)[0]
-  store.markers.splice(to, 0, marker)
-}
-
 const onEnd = (event) => {
-  moveMarker(event.oldIndex, event.newIndex)
+  store.moveMarker(event.oldIndex, event.newIndex)
 }
 </script>
 
