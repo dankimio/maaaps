@@ -29,7 +29,7 @@ const mapOptions = {
 const markerOptions = {
   icon: {
     path: 0,
-    scale: 5,
+    scale: 6,
     strokeColor: '#444',
     fillColor: '#444',
     fillOpacity: 1
@@ -54,7 +54,7 @@ watch(() => map.value?.ready, ready => {
 <template>
   <GoogleMap style="width: 100%; height: 100%; min-height: 500px;" v-bind="mapOptions" ref="map" class="overflow-hidden">
     <Marker v-for="(marker, index) in store.markers" :key="marker.place_id" :options="{
-      position: marker.geometry.location, label: { text: `${index + 1}`, color: 'white', fontSize: '10px' }, ...markerOptions
+      position: marker.geometry.location, label: { text: `${index + 1}`, color: 'white', fontSize: '11px' }, ...markerOptions
     }" />
   </GoogleMap>
 </template>

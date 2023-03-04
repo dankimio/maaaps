@@ -28,7 +28,7 @@ const googleMapsUrl = computed(() => {
 </script>
 
 <template>
-  <div class="flex justify-between bg-neutral-50 hover:bg-neutral-100 rounded-lg py-4 px-6 transition break-words">
+  <div class="flex justify-between bg-neutral-50 hover:bg-neutral-100 rounded-lg py-4 px-5 transition break-words">
     <div class="flex flex-col">
       <div class="flex gap-x-2 items-center mb-1">
         <span class="bg-neutral-200 text-neutral-600 h-4 w-4 rounded-full flex justify-center items-center"
@@ -37,9 +37,9 @@ const googleMapsUrl = computed(() => {
         </span>
         <a :href="googleMapsUrl" target="_blank">{{ marker.name }}</a>
       </div>
-      <p class="text-sm text-neutral-600">{{ marker.formatted_address }}</p>
+      <p class="text-sm text-neutral-500">{{ marker.formatted_address }}</p>
     </div>
     <button @click.prevent="store.removeMarker(marker)"
-      class="self-start text-neutral-600 hover:text-neutral-800">✕</button>
+      class="self-start text-sm text-neutral-500 hover:text-neutral-800">✕</button>
   </div>
 </template>
