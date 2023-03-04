@@ -13,6 +13,8 @@ export const useMapStore = defineStore('map', () => {
 
   function addMarker(marker) {
     markers.value.push(marker)
+    query.value = ''
+    searchResults.value = []
   }
 
   function removeMarker(marker) {

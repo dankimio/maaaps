@@ -26,9 +26,7 @@ const onInput = debounce(() => {
 }, 500)
 
 function onSearchResultClick(result) {
-  store.markers.push(result)
-  store.query = ''
-  store.searchResults = []
+  store.addMarker(result)
 }
 </script>
 
