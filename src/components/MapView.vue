@@ -18,7 +18,7 @@ const loader = new Loader({
 const mapOptions = {
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   center,
-  zoom: 10,
+  zoom: 12,
   streetViewControl: false,
   zoomControl: false,
   mapTypeControl: false,
