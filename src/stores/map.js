@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 export const useMapStore = defineStore('map', () => {
   // Google
@@ -9,6 +9,13 @@ export const useMapStore = defineStore('map', () => {
 
   // Map
   const markers = ref([])
+  const bounds = computed(() => {
+    const latLngBounds = new google.value.maps.LatLngBounds()
+    markers.value.forEach((marker) => latLngBounds.extend(marker.position))
+    return latLngBounds
+  })
+
+  // Search
   const query = ref('')
   const searchResults = ref([])
 
@@ -30,5 +37,17 @@ export const useMapStore = defineStore('map', () => {
     searchResults.value = []
   }
 
-  return { google, map, placesService, markers, query, searchResults, addMarker, removeMarker, moveMarker, clearSearch }
+  return {
+    google,
+    map,
+    placesService,
+    markers,
+    bounds,
+    query,
+    searchResults,
+    addMarker,
+    removeMarker,
+    moveMarker,
+    clearSearch
+  }
 })
