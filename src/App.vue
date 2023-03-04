@@ -13,6 +13,10 @@ const moveMarker = (from, to) => {
   const marker = store.markers.splice(from, 1)[0]
   store.markers.splice(to, 0, marker)
 }
+
+const onEnd = (event) => {
+  moveMarker(event.oldIndex, event.newIndex)
+}
 </script>
 
 <template>
@@ -25,7 +29,7 @@ const moveMarker = (from, to) => {
       <div class="col-span-4">
         <SearchInput class="mb-8" />
 
-        <Sortable :list="store.markers" item-key="place_id" class="flex flex-col gap-y-4">
+        <Sortable :list="store.markers" item-key="place_id" @end="onEnd" class="flex flex-col gap-y-4">
           <template #item="{ element }">
             <MarkerCard :marker="element" class="draggable" :key="element.id" />
           </template>
