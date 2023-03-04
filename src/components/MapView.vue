@@ -9,7 +9,7 @@ import { useMapStore } from '../stores/map'
 const store = useMapStore()
 const map = ref(null)
 
-const center = { lat: 51.509865, lng: -0.118092 }
+const center = { lat: 55.7558, lng: 37.6173 }
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   version: 'weekly',
@@ -18,7 +18,7 @@ const loader = new Loader({
 const mapOptions = {
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   center,
-  zoom: 12,
+  zoom: 10,
   streetViewControl: false,
   zoomControl: false,
   mapTypeControl: false,
