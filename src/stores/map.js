@@ -48,6 +48,10 @@ export const useMapStore = defineStore('map', () => {
     if (!markers.value.length) { return }
 
     map.value.fitBounds(bounds.value)
+
+    if (markers.value.length === 1) {
+      map.value.setZoom(15)
+    }
   }
 
   return {
