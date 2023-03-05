@@ -13,7 +13,7 @@ const center = { lat: 55.7558, lng: 37.6173 }
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   version: 'weekly',
-  libraries: ['places']
+  libraries: ['maps', 'places']
 })
 const mapOptions = {
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',

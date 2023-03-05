@@ -11,7 +11,12 @@ export const useMapStore = defineStore('map', () => {
   const markers = ref([])
   const bounds = computed(() => {
     const latLngBounds = new google.value.maps.LatLngBounds()
-    markers.value.forEach((marker) => latLngBounds.extend(marker.position))
+
+    markers.value.forEach(marker => {
+      const latLng = new google.value.maps.LatLng(marker.geometry.location.lat(), marker.geometry.location.lng())
+      latLngBounds.extend(latLng)
+    })
+
     return latLngBounds
   })
 
@@ -21,10 +26,12 @@ export const useMapStore = defineStore('map', () => {
 
   function addMarker(marker) {
     markers.value.push(marker)
+    fitBounds()
   }
 
   function removeMarker(marker) {
     markers.value = markers.value.filter((m) => m !== marker)
+    fitBounds()
   }
 
   function moveMarker(from, to) {
@@ -35,6 +42,12 @@ export const useMapStore = defineStore('map', () => {
   function clearSearch() {
     query.value = ''
     searchResults.value = []
+  }
+
+  function fitBounds() {
+    if (!markers.value.length) { return }
+
+    map.value.fitBounds(bounds.value)
   }
 
   return {
