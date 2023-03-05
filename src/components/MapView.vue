@@ -9,7 +9,12 @@ import { useMapStore } from '../stores/map'
 const store = useMapStore()
 const mapRef = ref(null)
 
-const center = { lat: 55.7558, lng: 37.6173 }
+// Moscow
+// const center = { lat: 55.7558, lng: 37.6173 }
+
+// London
+const center = { lat: 51.509865, lng: -0.118092 }
+
 const loader = new Loader({
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
   version: 'weekly',
