@@ -62,7 +62,7 @@ watch(() => mapRef.value?.ready, ready => {
   <GoogleMap style="width: 100%; height: 100%; min-height: 500px;" v-bind="mapOptions" ref="mapRef"
     class="overflow-hidden">
     <Marker v-for="(marker, index) in store.markers" :key="marker.place_id" :options="{
-      position: marker.geometry.location, label: { text: `${index + 1}`, color: 'white', fontSize: '11px' }, ...markerOptions
+      position: marker.geometry.location, label: { text: `${index + 1}`, color: 'white', fontSize: '12px' }, ...markerOptions
     }" />
   </GoogleMap>
 </template>
