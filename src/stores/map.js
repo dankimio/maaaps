@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+const maxZoom = 15
+
 export const useMapStore = defineStore('map', () => {
   // Google
   const google = ref(null)
@@ -50,7 +52,11 @@ export const useMapStore = defineStore('map', () => {
     map.value.fitBounds(bounds.value)
 
     if (markers.value.length === 1) {
-      map.value.setZoom(15)
+      map.value.setZoom(maxZoom)
+    }
+
+    if (map.value.getZoom() > maxZoom) {
+      map.value.setZoom(maxZoom)
     }
   }
 
