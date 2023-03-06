@@ -39,8 +39,6 @@ export const useMapStore = defineStore('map', () => {
       request.radius = '25000'
     }
 
-    console.log(request)
-
     placesService.value.textSearch(request, (results, status) => {
       if (status === google.value.maps.places.PlacesServiceStatus.OK) {
         searchResults.value = results
