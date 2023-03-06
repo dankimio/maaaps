@@ -26,6 +26,23 @@ export const useMapStore = defineStore('map', () => {
   const query = ref('')
   const searchResults = ref([])
 
+  function search() {
+    const request = {
+      query: query.value,
+      fields: ['name', 'geometry', 'formatted_address']
+    }
+
+    if (markers.value.length >= 1) {
+      request.locationBias = markers.value[0].geometry.location
+    }
+
+    placesService.value.findPlaceFromQuery(request, (results, status) => {
+      if (status === google.value.maps.places.PlacesServiceStatus.OK) {
+        searchResults.value = results
+      }
+    })
+  }
+
   function addMarker(marker) {
     markers.value.push(marker)
     fitBounds()
@@ -61,16 +78,17 @@ export const useMapStore = defineStore('map', () => {
   }
 
   return {
+    addMarker,
+    bounds,
+    clearSearch,
     google,
     map,
-    placesService,
     markers,
-    bounds,
-    query,
-    searchResults,
-    addMarker,
-    removeMarker,
     moveMarker,
-    clearSearch
+    placesService,
+    query,
+    removeMarker,
+    search,
+    searchResults
   }
 })

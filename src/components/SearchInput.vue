@@ -13,16 +13,7 @@ const onInput = debounce(() => {
     return
   }
 
-  const request = {
-    query: store.query,
-    location: moscow
-  }
-
-  store.placesService.textSearch(request, (results, status) => {
-    if (status === store.google.maps.places.PlacesServiceStatus.OK) {
-      store.searchResults = results
-    }
-  })
+  store.search()
 }, 500)
 
 function onSearchResultClick(result) {
