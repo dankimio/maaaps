@@ -28,15 +28,20 @@ export const useMapStore = defineStore('map', () => {
 
   function search() {
     const request = {
-      query: query.value,
-      fields: ['name', 'geometry', 'formatted_address']
+      query: query.value
     }
 
-    if (markers.value.length >= 1) {
-      request.locationBias = markers.value[0].geometry.location
+    if (markers.value.length === 1) {
+      request.location = markers.value[0].geometry.location
+      request.radius = '25000'
+    } else if (markers.value.length >= 2) {
+      request.location = bounds.value.getCenter()
+      request.radius = '25000'
     }
 
-    placesService.value.findPlaceFromQuery(request, (results, status) => {
+    console.log(request)
+
+    placesService.value.textSearch(request, (results, status) => {
       if (status === google.value.maps.places.PlacesServiceStatus.OK) {
         searchResults.value = results
       }
