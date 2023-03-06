@@ -5,8 +5,6 @@ import { useMapStore } from '../stores/map'
 
 const store = useMapStore()
 
-const moscow = { lat: 55.7558, lng: 37.6173 }
-
 const onInput = debounce(() => {
   if (!store.query) {
     store.searchResults = []
