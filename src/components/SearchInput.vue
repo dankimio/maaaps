@@ -4,6 +4,7 @@ import { debounce } from 'lodash'
 import { useMapStore } from '../stores/map'
 
 const store = useMapStore()
+const maxSearchResults = 5
 
 const onInput = debounce(() => {
   if (!store.query) {
@@ -27,8 +28,8 @@ function onSearchResultClick(result) {
 
     <div v-if="store.searchResults.length" class="absolute w-full shadow-lg z-10 bg-neutral-50 rounded-md overflow-hidden"
       style="top: calc(100% + 12px)">
-      <div v-for="result in store.searchResults" :key="result" @click="onSearchResultClick(result)"
-        class="px-4 py-3 flex flex-col hover:bg-neutral-100 cursor-pointer">
+      <div v-for="result in store.searchResults.slice(0, maxSearchResults)" :key="result"
+        @click="onSearchResultClick(result)" class="px-4 py-3 flex flex-col hover:bg-neutral-100 cursor-pointer">
         <span class="-mb-0.5">
           {{ result.name }}
         </span>
