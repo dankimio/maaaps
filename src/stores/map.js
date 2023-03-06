@@ -40,6 +40,11 @@ export const useMapStore = defineStore('map', () => {
     }
 
     placesService.value.textSearch(request, (results, status) => {
+      if (status === google.value.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+        searchResults.value = []
+        return
+      }
+
       if (status === google.value.maps.places.PlacesServiceStatus.OK) {
         searchResults.value = results
       }
