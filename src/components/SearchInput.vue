@@ -4,7 +4,7 @@ import { debounce } from 'lodash'
 import { useMapStore } from '../stores/map'
 
 const store = useMapStore()
-const maxSearchResults = 5
+const maxSearchResults = 8
 
 const onInput = debounce(() => {
   if (!store.query) {
