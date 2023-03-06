@@ -8,7 +8,7 @@ const maxSearchResults = 5
 
 const onInput = debounce(() => {
   if (!store.query) {
-    store.searchResults = []
+    store.clearSearch()
     return
   }
 
