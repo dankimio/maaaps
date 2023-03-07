@@ -15,7 +15,7 @@ const onEnd = (event) => {
 </script>
 
 <template>
-  <div class="container mx-auto py-4 md:py-12 px-4 flex flex-col min-h-screen">
+  <div class="container mx-auto py-4 md:py-10 px-4 flex flex-col min-h-screen">
     <div class="flex-1 grid grid-cols-12 md:gap-x-10 gap-y-8 md:gap-y-0">
       <div class="col-span-12 md:col-span-8">
         <MapView class="h-max" />
