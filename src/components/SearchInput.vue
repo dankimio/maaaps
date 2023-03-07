@@ -24,7 +24,7 @@ function onSearchResultClick(result) {
 <template>
   <div class="relative flex">
     <input type="text" name="name" id="" class="w-full px-4 h-12 border-none rounded-md bg-neutral-100" @input="onInput"
-      v-model="store.query" autocomplete="off" placeholder="Start typing…">
+      v-on:input="store.loading = true" v-model="store.query" autocomplete="off" placeholder="Start typing…">
 
     <div v-if="store.searchResults.length" class="dropdown">
       <div v-for="result in store.searchResults.slice(0, maxSearchResults)" :key="result"
@@ -38,7 +38,7 @@ function onSearchResultClick(result) {
       </div>
     </div>
 
-    <div v-if="store.query && store.searchResults.length === 0" class="dropdown">
+    <div v-if="store.query && !store.loading && store.searchResults.length === 0" class="dropdown">
       <div class="p-5 flex justify-center items-center text-neutral-500 text-sm">
         No results found
       </div>

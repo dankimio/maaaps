@@ -25,8 +25,11 @@ export const useMapStore = defineStore('map', () => {
   // Search
   const query = ref('')
   const searchResults = ref([])
+  const loading = ref(false)
 
   function search() {
+    // loading.value = true
+
     const request = {
       query: query.value
     }
@@ -40,6 +43,8 @@ export const useMapStore = defineStore('map', () => {
     }
 
     placesService.value.textSearch(request, (results, status) => {
+      loading.value = false
+
       if (status === google.value.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
         searchResults.value = []
         return
@@ -67,6 +72,7 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function clearSearch() {
+    loading.value = false
     query.value = ''
     searchResults.value = []
   }
@@ -91,6 +97,7 @@ export const useMapStore = defineStore('map', () => {
     clearSearch,
     google,
     map,
+    loading,
     markers,
     moveMarker,
     placesService,
