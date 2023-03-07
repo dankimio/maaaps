@@ -39,8 +39,8 @@ function onSearchResultClick(result) {
     </div>
 
     <div v-if="store.query && store.searchResults.length === 0" class="dropdown">
-      <div class="p-5 flex justify-center items-center text-neutral-700">
-        No results :(
+      <div class="p-5 flex justify-center items-center text-neutral-500 text-sm">
+        No results found
       </div>
     </div>
   </div>
