@@ -13,7 +13,7 @@ const onInput = debounce(() => {
   }
 
   store.search()
-}, 500)
+}, 250)
 
 function onSearchResultClick(result) {
   store.addMarker(result)
