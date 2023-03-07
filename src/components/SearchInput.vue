@@ -26,8 +26,7 @@ function onSearchResultClick(result) {
     <input type="text" name="name" id="" class="w-full px-4 h-12 border-none rounded-md bg-neutral-100" @input="onInput"
       v-model="store.query" autocomplete="off" placeholder="Start typing…">
 
-    <div v-if="store.searchResults.length" class="absolute w-full shadow-lg z-10 bg-neutral-50 rounded-md overflow-hidden"
-      style="top: calc(100% + 12px)">
+    <div v-if="store.searchResults.length" class="dropdown">
       <div v-for="result in store.searchResults.slice(0, maxSearchResults)" :key="result"
         @click="onSearchResultClick(result)" class="px-4 py-3 flex flex-col hover:bg-neutral-100 cursor-pointer">
         <span class="-mb-0.5">
@@ -38,5 +37,19 @@ function onSearchResultClick(result) {
         </span>
       </div>
     </div>
+
+    <div v-if="store.query && store.searchResults.length === 0" class="dropdown">
+      <div class="p-5 flex justify-center items-center text-neutral-700">
+        No results :(
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.dropdown {
+  @apply absolute w-full z-10 rounded-md overflow-hidden border bg-white;
+
+  top: calc(100% + 12px);
+}
+</style>
