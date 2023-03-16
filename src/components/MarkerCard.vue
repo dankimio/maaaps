@@ -33,14 +33,24 @@ const googleMapsUrl = computed(() => {
       <div class="flex gap-x-2 items-center mb-1">
         <span
           class="handle cursor-move bg-neutral-200 text-neutral-600 h-4 w-4 rounded-full flex justify-center items-center"
-          style="font-size: 0.66rem">
+          style="font-size: 0.66rem"
+        >
           {{ index + 1 }}
         </span>
-        <a :href="googleMapsUrl" target="_blank">{{ marker.name }}</a>
+        <a
+          :href="googleMapsUrl"
+          target="_blank"
+        >{{ marker.name }}</a>
       </div>
-      <p class="text-sm text-neutral-500">{{ marker.formatted_address }}</p>
+      <p class="text-sm text-neutral-500">
+        {{ marker.formatted_address }}
+      </p>
     </div>
-    <button @click.prevent="store.removeMarker(marker)"
-      class="self-start text-sm text-neutral-500 hover:text-neutral-800">✕</button>
+    <button
+      class="self-start text-sm text-neutral-500 hover:text-neutral-800"
+      @click.prevent="store.removeMarker(marker)"
+    >
+      ✕
+    </button>
   </div>
 </template>

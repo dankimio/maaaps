@@ -24,10 +24,20 @@ const onEnd = (event) => {
       <div class="col-span-12 md:col-span-4">
         <SearchInput class="mb-4 md:mb-6" />
 
-        <Sortable :list="store.markers" item-key="place_id" @end="onEnd" :options="{ handle: '.handle' }"
-          class="flex flex-col gap-y-4">
+        <Sortable
+          item-key="place_id"
+          :list="store.markers"
+          :options="{ handle: '.handle' }"
+          class="flex flex-col gap-y-4"
+          @end="onEnd"
+        >
           <template #item="{ element, index }">
-            <MarkerCard :marker="element" :index="index" class="draggable" :key="element.id" />
+            <MarkerCard
+              :key="element.id"
+              :marker="element"
+              :index="index"
+              class="draggable"
+            />
           </template>
         </Sortable>
       </div>
