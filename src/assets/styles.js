@@ -95,7 +95,7 @@ const styles = [
     elementType: 'geometry',
     stylers: [
       {
-        color: '#e5e5e5'
+        color: '#e2f3d8'
       }
     ]
   },
@@ -211,7 +211,7 @@ const styles = [
     elementType: 'geometry',
     stylers: [
       {
-        color: '#c9c9c9'
+        color: '#d8edfd'
       }
     ]
   },
