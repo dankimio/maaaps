@@ -31,7 +31,8 @@ const googleMapsUrl = computed(() => {
   <div class="flex justify-between bg-neutral-50 rounded-lg py-4 px-5 transition break-words">
     <div class="flex flex-col">
       <div class="flex gap-x-2 items-center mb-1">
-        <span class="handle bg-neutral-200 text-neutral-600 h-4 w-4 rounded-full flex justify-center items-center"
+        <span
+          class="handle cursor-move bg-neutral-200 text-neutral-600 h-4 w-4 rounded-full flex justify-center items-center"
           style="font-size: 0.66rem">
           {{ index + 1 }}
         </span>
