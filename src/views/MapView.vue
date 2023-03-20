@@ -69,7 +69,7 @@ watch(() => mapRef.value?.ready, ready => {
 </script>
 
 <template>
-  <div class="container mx-auto py-4 md:py-10 px-4 flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen">
     <nav>
       <RouterLink to="/">
         Home
