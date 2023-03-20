@@ -1,7 +1,7 @@
 <script setup>
 import { debounce } from 'lodash'
 
-import { useMapStore } from '../stores/map'
+import { useMapStore } from '@/stores/map'
 
 const store = useMapStore()
 const maxSearchResults = 8

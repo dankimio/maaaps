@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import { useMapStore } from '../stores/map'
+import { useMapStore } from '@/stores/map'
 
 const store = useMapStore()
 
