@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink, RouterView } from 'vue-router'
 import { Sortable } from 'sortablejs-vue3'
 
 import SearchInput from './components/SearchInput.vue'
