@@ -3,13 +3,13 @@ import { ref, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { GoogleMap, Marker } from 'vue3-google-map'
 
-import styles from '../assets/styles'
-import { useMapStore } from '../stores/map'
+import styles from '@/assets/styles'
+import { useMapStore } from '@/stores/map'
 
 import { Sortable } from 'sortablejs-vue3'
 
-import SearchInput from '../components/SearchInput.vue'
-import MarkerCard from '../components/MarkerCard.vue'
+import SearchInput from '@/components/SearchInput.vue'
+import MarkerCard from '@/components/MarkerCard.vue'
 
 const store = useMapStore()
 
