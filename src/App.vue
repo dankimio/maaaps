@@ -16,6 +16,20 @@ const onEnd = (event) => {
 
 <template>
   <div class="container mx-auto py-4 md:py-10 px-4 flex flex-col min-h-screen">
+    <div>
+      <p>
+        <!-- use the router-link component for navigation. -->
+        <!-- specify the link by passing the `to` prop. -->
+        <!-- `<router-link>` will render an `<a>` tag with the correct `href` attribute -->
+        <router-link to="/">
+          Home
+        </router-link>
+        <router-link to="/about">
+          About
+        </router-link>
+      </p>
+      <router-view />
+    </div>
     <div class="flex-1 grid grid-cols-12 md:gap-x-10 gap-y-8 md:gap-y-0">
       <div class="col-span-12 md:col-span-8">
         <MapView style="max-height: 90vh;" />
