@@ -12,8 +12,6 @@ const app = createApp(App)
 
 app.use(pinia)
 app.use(router)
-app.use(VueFire, {
-  firebaseApp,
-  modules: [VueFireAuth()]
-})
+app.use(VueFire, { firebaseApp, modules: [VueFireAuth()] })
+
 app.mount('#app')
