@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
+    "firebase": "^9.18.0",
     "lodash": "^4.17.21",
     "pinia": "^2.0.33",
     "sortablejs-vue3": "^1.2.8",
