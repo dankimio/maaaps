@@ -22,13 +22,13 @@ const loader = new Loader({
 })
 const mapOptions = {
   apiKey: 'AIzaSyDjyIM1XPwAW252iSF9AKQ9bUTwwzMtrLI',
-  center,
-  zoom: 12,
-  streetViewControl: false,
-  zoomControl: false,
-  mapTypeControl: false,
   fullscreenControl: false,
   keyboardShortcuts: false,
+  mapTypeControl: false,
+  streetViewControl: false,
+  zoom: 12,
+  zoomControl: false,
+  center,
   styles
 }
 const markerOptions = {
