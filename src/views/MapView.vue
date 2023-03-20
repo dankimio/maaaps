@@ -70,17 +70,6 @@ watch(() => mapRef.value?.ready, ready => {
 
 <template>
   <div class="flex flex-col min-h-screen">
-    <nav>
-      <RouterLink to="/">
-        Home
-      </RouterLink>
-      <RouterLink to="/about">
-        About
-      </RouterLink>
-    </nav>
-
-    <RouterView />
-
     <div class="flex-1 grid grid-cols-12 md:gap-x-10 gap-y-8 md:gap-y-0">
       <div class="col-span-12 md:col-span-8">
         <GoogleMap
