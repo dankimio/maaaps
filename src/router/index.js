@@ -1,20 +1,23 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
-// 1. Define route components
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
-
-// 2. Define some routes
-const routes = [
-  { path: '/', component: Home },
-  { path: '/about', component: About }
-]
-
-// 3. Create the router instance and pass the `routes` option
 const router = createRouter({
-  // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
-  history: createWebHashHistory(),
-  routes
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView
+    },
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue')
+    }
+  ]
 })
 
 export default router
