@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="container mx-auto py-4 md:py-10 px-4">
+  <div class="container mx-auto py-4 md:py-6 px-4">
     <nav class="flex gap-x-5 text-sm mb-4 text-neutral-800">
       <RouterLink to="/">
         Home
