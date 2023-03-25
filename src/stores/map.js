@@ -80,11 +80,13 @@ export const useMapStore = defineStore('map', () => {
   function fitBounds() {
     if (!markers.value.length) { return }
 
-    map.value.fitBounds(bounds.value)
-
     if (markers.value.length === 1) {
+      map.value.setCenter(markers.value[0].geometry.location)
       map.value.setZoom(maxZoom)
+      return
     }
+
+    map.value.fitBounds(bounds.value)
 
     if (map.value.getZoom() > maxZoom) {
       map.value.setZoom(maxZoom)
@@ -95,6 +97,7 @@ export const useMapStore = defineStore('map', () => {
     addMarker,
     bounds,
     clearSearch,
+    fitBounds,
     google,
     map,
     loading,

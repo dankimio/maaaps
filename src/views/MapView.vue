@@ -62,6 +62,9 @@ watch(() => mapRef.value?.ready, ready => {
       store.google = google
       store.placesService = new google.maps.places.PlacesService(mapRef.value.map)
     })
+    .then(() => {
+      store.fitBounds()
+    })
     .catch((error) => {
       console.log(error)
     })
