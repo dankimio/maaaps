@@ -38,8 +38,6 @@ export const useMapStore = defineStore('map', () => {
       placesService.value.findPlaceFromQuery(query, (results, status) => {
         if (status !== 'OK') { console.log(status) }
 
-        console.log(results)
-
         addMarker(results[0])
       })
     })
