@@ -66,7 +66,8 @@ watch(() => mapRef.value?.ready, ready => {
       store.fitBounds()
     })
     .then(() => {
-      if (!store.markers.length) {
+      console.log(store.isEmpty)
+      if (store.isEmpty) {
         store.seed()
       }
     })

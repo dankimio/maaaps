@@ -21,6 +21,7 @@ export const useMapStore = defineStore('map', () => {
 
     return latLngBounds
   })
+  const isEmpty = computed(() => !markers.value.length)
 
   // Search
   const query = ref('')
@@ -112,17 +113,18 @@ export const useMapStore = defineStore('map', () => {
     addMarker,
     bounds,
     clearSearch,
+    isEmpty,
     fitBounds,
     google,
-    map,
     loading,
+    map,
     markers,
     moveMarker,
     placesService,
     query,
     removeMarker,
     search,
-    seed,
-    searchResults
+    searchResults,
+    seed
   }
 })
