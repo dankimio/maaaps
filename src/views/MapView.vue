@@ -72,13 +72,13 @@ watch(() => mapRef.value?.ready, ready => {
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col flex-1">
     <div class="flex-1 grid grid-cols-12 md:gap-x-10 gap-y-8 md:gap-y-0">
       <div class="col-span-12 md:col-span-8">
         <GoogleMap
           v-bind="mapOptions"
           ref="mapRef"
-          style="width: 100%; height: 100%; min-height: 500px; max-height: 90vh;"
+          style="width: 100%; height: 100%; min-height: 500px; max-height: 85vh;"
           class="overflow-hidden"
         >
           <Marker
