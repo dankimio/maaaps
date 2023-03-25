@@ -78,7 +78,7 @@ watch(() => mapRef.value?.ready, ready => {
         <GoogleMap
           v-bind="mapOptions"
           ref="mapRef"
-          style="width: 100%; height: 100%; min-height: 500px; max-height: 85vh;"
+          style="width: 100%; height: 100%; min-height: 500px; max-height: 90vh;"
           class="overflow-hidden"
         >
           <Marker
