@@ -67,14 +67,7 @@ watch(() => mapRef.value?.ready, ready => {
     })
     .then(() => {
       if (!store.markers.length) {
-        store.placesService.findPlaceFromQuery({
-          query: 'veladora',
-          fields: ['place_id', 'name', 'geometry', 'formatted_address', 'photos']
-        }, (results, status) => {
-          if (status === 'OK') {
-            store.addMarker(results[0])
-          }
-        })
+        store.seed()
       }
     })
     .catch((error) => {

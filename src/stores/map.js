@@ -27,6 +27,21 @@ export const useMapStore = defineStore('map', () => {
   const searchResults = ref([])
   const loading = ref(false)
 
+  function seed() {
+    const queries = [
+      { query: 'veladora', fields: ['place_id', 'name', 'geometry', 'formatted_address', 'photos'] },
+      { query: 'delai kulturu', fields: ['place_id', 'name', 'geometry', 'formatted_address', 'photos'] }
+    ]
+
+    queries.forEach((query) => {
+      placesService.value.findPlaceFromQuery(query, (results, status) => {
+        if (status !== 'OK') { return }
+
+        addMarker(results[0])
+      })
+    })
+  }
+
   function search() {
     // loading.value = true
 
@@ -107,6 +122,7 @@ export const useMapStore = defineStore('map', () => {
     query,
     removeMarker,
     search,
+    seed,
     searchResults
   }
 })
