@@ -86,7 +86,7 @@ export const useMapStore = defineStore('map', () => {
       return
     }
 
-    map.value.fitBounds(bounds.value)
+    map.value.fitBounds(bounds.value, 128)
 
     if (map.value.getZoom() > maxZoom) {
       map.value.setZoom(maxZoom)
