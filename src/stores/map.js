@@ -31,12 +31,14 @@ export const useMapStore = defineStore('map', () => {
   function seed() {
     const queries = [
       { query: 'veladora', fields: ['place_id', 'name', 'geometry', 'formatted_address', 'photos'] },
-      { query: 'delai kulturu', fields: ['place_id', 'name', 'geometry', 'formatted_address', 'photos'] }
+      { query: 'делай культуру', fields: ['place_id', 'name', 'geometry', 'formatted_address', 'photos'] }
     ]
 
-    queries.forEach((query) => {
+    queries.forEach(query => {
       placesService.value.findPlaceFromQuery(query, (results, status) => {
-        if (status !== 'OK') { return }
+        if (status !== 'OK') { console.log(status) }
+
+        console.log(results)
 
         addMarker(results[0])
       })
