@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+import { placesCollection } from '../firebase'
+
 const maxZoom = 15
 
 export const useMapStore = defineStore('map', () => {
