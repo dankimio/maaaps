@@ -86,7 +86,7 @@ export const useMapStore = defineStore('map', () => {
         lat: marker.geometry.location.lat(),
         lng: marker.geometry.location.lng()
       },
-      marker: replaceFunctionsWithValues(marker)
+      marker: replaceUndefinedWithNull(replaceFunctionsWithValues(marker))
     }
     const place = await addDoc(placesRef, placeObject)
     places.value.push(place)
