@@ -76,12 +76,12 @@ export const useMapStore = defineStore('map', () => {
   }
 
   async function addPlace(marker) {
-    const place = {
+    const placeObject = {
       name: marker.name,
       geometry: marker.geometry,
       marker
     }
-    await placesRef.add(place)
+    const place = await placesRef.add(placeObject)
     places.value.push(place)
   }
 
