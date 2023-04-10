@@ -86,9 +86,13 @@ export const useMapStore = defineStore('map', () => {
       },
       marker: replaceUndefinedWithNull(replaceFunctionsWithValues(marker))
     }
-    console.log(placeObject)
-    const place = await addDoc(placesRef, placeObject)
-    places.value.push(place)
+
+    // debugger
+
+    // placesRef
+    // console.log(placeObject)
+    await addDoc(placesRef, placeObject)
+    // places.value.push(place)
   }
 
   function addMarker(marker) {

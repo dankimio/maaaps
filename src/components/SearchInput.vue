@@ -15,9 +15,9 @@ const onInput = debounce(() => {
   store.search()
 }, 250)
 
-function onSearchResultClick(result) {
+async function onSearchResultClick(result) {
   store.addMarker(result)
-  store.addPlace(result)
+  await store.addPlace(result)
   store.clearSearch()
 }
 </script>
