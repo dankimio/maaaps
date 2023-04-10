@@ -78,8 +78,6 @@ export const useMapStore = defineStore('map', () => {
   }
 
   async function addPlace(marker) {
-    console.log(replaceFunctionsWithValues(marker))
-
     const placeObject = {
       name: marker.name,
       location: {
@@ -88,6 +86,7 @@ export const useMapStore = defineStore('map', () => {
       },
       marker: replaceUndefinedWithNull(replaceFunctionsWithValues(marker))
     }
+    console.log(placeObject)
     const place = await addDoc(placesRef, placeObject)
     places.value.push(place)
   }
@@ -140,6 +139,7 @@ export const useMapStore = defineStore('map', () => {
 
     // Iterate over the keys of the input object
     for (const key in object) {
+      // eslint-disable-next-line no-prototype-builtins
       if (object.hasOwnProperty(key)) {
         const value = object[key]
 
