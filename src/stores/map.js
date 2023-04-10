@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+import { addDoc } from 'firebase/firestore'
+
 import { placesRef } from '../firebase'
 
 const maxZoom = 15
@@ -81,7 +83,7 @@ export const useMapStore = defineStore('map', () => {
       geometry: marker.geometry,
       marker
     }
-    const place = await placesRef.add(placeObject)
+    const place = await addDoc(placesRef, placeObject)
     places.value.push(place)
   }
 
