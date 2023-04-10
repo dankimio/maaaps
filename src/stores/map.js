@@ -124,6 +124,7 @@ export const useMapStore = defineStore('map', () => {
 
   return {
     addMarker,
+    addPlace,
     bounds,
     clearSearch,
     isEmpty,
