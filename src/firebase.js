@@ -15,4 +15,4 @@ export const firebaseApp = initializeApp(firebaseConfig)
 
 const db = getFirestore(firebaseApp)
 
-export const placesCollection = collection(db, 'places')
+export const placesRef = collection(db, 'places')
