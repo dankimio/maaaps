@@ -28,6 +28,9 @@ export const useMapStore = defineStore('map', () => {
   const searchResults = ref([])
   const loading = ref(false)
 
+  // Places
+  const places = ref([])
+
   function seed() {
     const queries = [
       { query: 'veladora', fields: ['place_id', 'name', 'geometry', 'formatted_address', 'photos'] },
