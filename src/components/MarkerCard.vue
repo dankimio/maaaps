@@ -37,10 +37,7 @@ const googleMapsUrl = computed(() => {
         >
           {{ index + 1 }}
         </span>
-        <a
-          :href="googleMapsUrl"
-          target="_blank"
-        >{{ marker.name }}</a>
+        <a href="#">{{ marker.name }}</a>
       </div>
       <p class="text-sm text-neutral-500">
         {{ marker.formatted_address }}
