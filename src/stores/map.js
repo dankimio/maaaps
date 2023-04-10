@@ -78,7 +78,7 @@ export const useMapStore = defineStore('map', () => {
   }
 
   async function addPlace(marker) {
-    console.log(replaceFunctionsInObject(marker))
+    console.log(replaceFunctionsWithValues(marker))
 
     const placeObject = {
       name: marker.name,
@@ -86,7 +86,7 @@ export const useMapStore = defineStore('map', () => {
         lat: marker.geometry.location.lat(),
         lng: marker.geometry.location.lng()
       },
-      marker: replaceFunctionsInObject(marker)
+      marker: replaceFunctionsWithValues(marker)
     }
     const place = await addDoc(placesRef, placeObject)
     places.value.push(place)
@@ -129,7 +129,7 @@ export const useMapStore = defineStore('map', () => {
     }
   }
 
-  function replaceFunctionsInObject(object) {
+  function replaceFunctionsWithValues(object) {
     // If the input is not an object, return it as is
     if (typeof object !== 'object' || object === null) {
       return object
@@ -148,7 +148,7 @@ export const useMapStore = defineStore('map', () => {
           result[key] = value()
         } else {
           // If the value is not a function, recursively replace any function values it contains
-          result[key] = replaceFunctionsInObject(value)
+          result[key] = replaceFunctionsWithValues(value)
         }
       }
     }
