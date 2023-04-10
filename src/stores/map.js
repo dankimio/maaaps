@@ -75,6 +75,14 @@ export const useMapStore = defineStore('map', () => {
     })
   }
 
+  function addPlace(marker) {
+    places.value.push({
+      id: marker.place_id,
+      name: marker.name,
+      marker
+    })
+  }
+
   function addMarker(marker) {
     markers.value.push(marker)
     fitBounds()
