@@ -80,7 +80,10 @@ export const useMapStore = defineStore('map', () => {
   async function addPlace(marker) {
     const placeObject = {
       name: marker.name,
-      geometry: marker.geometry,
+      location: {
+        lat: marker.geometry.location.lat(),
+        lng: marker.geometry.location.lng()
+      },
       marker
     }
     const place = await addDoc(placesRef, placeObject)
