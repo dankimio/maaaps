@@ -47,8 +47,6 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function search() {
-    // loading.value = true
-
     const request = {
       query: query.value
     }
