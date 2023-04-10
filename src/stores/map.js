@@ -139,8 +139,7 @@ export const useMapStore = defineStore('map', () => {
 
     // Iterate over the keys of the input object
     for (const key in object) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (object.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(object, key)) {
         const value = object[key]
 
         // If the value is a function, call it and replace it with the result
