@@ -78,13 +78,15 @@ export const useMapStore = defineStore('map', () => {
   }
 
   async function addPlace(marker) {
+    console.log(replaceFunctionsInObject(marker))
+
     const placeObject = {
       name: marker.name,
       location: {
         lat: marker.geometry.location.lat(),
         lng: marker.geometry.location.lng()
       },
-      marker
+      marker: replaceFunctionsInObject(marker)
     }
     const place = await addDoc(placesRef, placeObject)
     places.value.push(place)
@@ -125,6 +127,45 @@ export const useMapStore = defineStore('map', () => {
     if (map.value.getZoom() > maxZoom) {
       map.value.setZoom(maxZoom)
     }
+  }
+
+  function replaceFunctionsInObject(object) {
+    // If the input is not an object, return it as is
+    if (typeof object !== 'object' || object === null) {
+      return object
+    }
+
+    // Create a new object to hold the result
+    const result = {}
+
+    // Iterate over the keys of the input object
+    for (const key in object) {
+      if (object.hasOwnProperty(key)) {
+        const value = object[key]
+
+        // If the value is a function, call it and replace it with the result
+        if (typeof value === 'function') {
+          result[key] = value()
+        } else {
+          // If the value is not a function, recursively replace any function values it contains
+          result[key] = replaceFunctionsInObject(value)
+        }
+      }
+    }
+
+    return result
+  }
+
+  function replaceUndefinedWithNull(obj) {
+    const newObj = {}
+    for (const [key, value] of Object.entries(obj)) {
+      if (typeof value === 'object' && value !== null) {
+        newObj[key] = replaceUndefinedWithNull(value)
+      } else {
+        newObj[key] = value === undefined ? null : value
+      }
+    }
+    return newObj
   }
 
   return {
